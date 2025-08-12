@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Premium | Accès Exclusif</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form id="registerForm">
+                <h1>Créer un compte</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-google"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social"><i class="fab fa-github"></i></a>
+                </div>
+                <span>ou utilisez votre email pour vous inscrire</span>
+                <input type="text" placeholder="Nom complet" id="regName" required />
+                <input type="email" placeholder="Email" id="regEmail" required />
+                <input type="password" placeholder="Mot de passe" id="regPassword" required />
+                <div class="password-strength">
+                    <div class="strength-meter"></div>
+                    <span class="strength-text">Faible</span>
+                </div>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form id="loginForm">
+                <h1>Se connecter</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-google"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social"><i class="fab fa-github"></i></a>
+                </div>
+                <span>ou utilisez votre compte</span>
+                <input type="email" placeholder="Email" id="loginEmail" required />
+                <input type="password" placeholder="Mot de passe" id="loginPassword" required />
+                <a href="#" class="forgot-password">Mot de passe oublié?</a>
+                <button type="submit">Connexion</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Content de vous revoir!</h1>
+                    <p>Pour accéder à votre espace premium, connectez-vous avec vos identifiants</p>
+                    <button class="ghost" id="signIn">Connexion</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Première visite?</h1>
+                    <p>Inscrivez-vous pour découvrir notre contenu exclusif et profiter de tous nos avantages</p>
+                    <button class="ghost" id="signUp">Inscription</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="premium-content" id="premiumContent">
+        <header>
+            <nav>
+                <div class="logo">Premium<span>Access</span></div>
+                <button id="logoutBtn" class="logout-btn">Déconnexion</button>
+            </nav>
+        </header>
+        <main>
+            <div class="welcome-message">
+                <h1>Bienvenue dans votre espace <span>Premium</span></h1>
+                <p class="subtitle">Contenu exclusif réservé aux membres</p>
+                <div class="animated-checkmark">
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytiques Avancées</h3>
+                    <p>Accédez à des données exclusives et des analyses détaillées pour optimiser vos performances.</p>
+                    <button class="card-btn">Explorer</button>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Formations Premium</h3>
+                    <p>Des tutoriels vidéo et des formations complètes réservées à nos membres privilégiés.</p>
+                    <button class="card-btn">Commencer</button>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Outils Exclusifs</h3>
+                    <p>Une suite complète d'outils professionnels pour booster votre productivité.</p>
+                    <button class="card-btn">Utiliser</button>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support Prioritaire</h3>
+                    <p>Bénéficiez d'un support client dédié avec des temps de réponse accélérés.</p>
+                    <button class="card-btn">Contacter</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
