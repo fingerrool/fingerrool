@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Premium Fiverr</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1dbf73;
+            --secondary-color: #0e0e0f;
+            --accent-color: #446ee7;
+            --light-color: #f7f7f7;
+            --dark-color: #222325;
+            --text-color: #404145;
+            --card-bg: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 2rem;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            opacity: 0.9;
+            z-index: -1;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+        }
+
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-box button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-box button:hover {
+            background: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            height: 160px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-category {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .service-description {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            flex-grow: 1;
+        }
+
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .service-price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .service-link {
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-block;
+            text-align: center;
+        }
+
+        .service-link:hover {
+            background: var(--accent-color);
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--dark-color);
+            color: white;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card {
+            animation: fadeIn 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        /* Animation delay for staggered effect */
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+        .service-card:nth-child(7) { animation-delay: 0.7s; }
+        .service-card:nth-child(8) { animation-delay: 0.8s; }
+        .service-card:nth-child(9) { animation-delay: 0.9s; }
+        .service-card:nth-child(10) { animation-delay: 1.0s; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-crown"></i>
+            <div>Services <span>Premium</span></div>
+        </div>
+        <p class="tagline">Découvrez nos services exclusifs de conception par des experts vérifiés</p>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="Rechercher un service...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="filters">
+            <button class="filter-btn active">Tous</button>
+            <button class="filter-btn">Design</button>
+            <button class="filter-btn">Développement</button>
+            <button class="filter-btn">Marketing</button>
+            <button class="filter-btn">Rédaction</button>
+        </div>
+
+        <div class="services-grid">
+            <!-- Service cards will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Services Premium Fiverr</h3>
+            <p>Des professionnels qualifiés pour tous vos projets créatifs</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            
+            <p>&copy; 2023 Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample service data
+        const services = [
+            {
+                title: "Logo Design Premium",
+                description: "Créez une identité visuelle unique pour votre marque avec nos designers experts.",
+                price: "€150",
+                category: "Design",
+                image: "https://images.unsplash.com/photo-1601370690183-1c7796ecec61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bG9nbyUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample1"
+            },
+            {
+                title: "Site Web E-commerce",
+                description: "Développement de boutique en ligne complète avec interface administrateur.",
+                price: "€500",
+                category: "Développement",
+                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZS1jb21tZXJjZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample2"
+            },
+            {
+                title: "Campagne Publicitaire",
+                description: "Stratégie et mise en œuvre de campagnes publicitaires sur les réseaux sociaux.",
+                price: "€300",
+                category: "Marketing",
+                image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFya2V0aW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample3"
+            },
+            {
+                title: "Rédaction SEO",
+                description: "Articles optimisés pour le référencement avec recherches de mots-clés incluses.",
+                price: "€100",
+                category: "Rédaction",
+                image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2VvfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample4"
+            },
+            {
+                title: "Illustration Personnalisée",
+                description: "Illustrations sur mesure pour livres, sites web ou marketing.",
+                price: "€200",
+                category: "Design",
+                image: "https://images.unsplash.com/photo-1584824486539-53bb4646bdbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aWxsdXN0cmF0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample5"
+            },
+            {
+                title: "Application Mobile",
+                description: "Conception et développement d'applications iOS et Android natives.",
+                price: "€800",
+                category: "Développement",
+                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9iaWxlJTIwYXBwfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample6"
+            },
+            {
+                title: "Stratégie de Marque",
+                description: "Développement d'une identité de marque complète et stratégie de positionnement.",
+                price: "€450",
+                category: "Marketing",
+                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnJhbmRpbmclMjBzdHJhdGVneXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample7"
+            },
+            {
+                title: "Traduction Professionnelle",
+                description: "Services de traduction de haute qualité par des linguistes natifs.",
+                price: "€0.10/mot",
+                category: "Rédaction",
+                image: "https://images.unsplash.com/photo-1554188248-986adbb73be4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dHJhbnNsYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample8"
+            },
+            {
+                title: "Design d'Interface Utilisateur",
+                description: "Conception d'interfaces utilisateur intuitives et esthétiques pour vos applications.",
+                price: "€350",
+                category: "Design",
+                image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dWklMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample9"
+            },
+            {
+                title: "API & Intégration",
+                description: "Développement et intégration d'API pour connecter vos systèmes.",
+                price: "€400",
+                category: "Développement",
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBpfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample10"
+            },
+            {
+                title: "Community Management",
+                description: "Gestion complète de vos réseaux sociaux et engagement avec votre audience.",
+                price: "€250/mois",
+                category: "Marketing",
+                image: "https://images.unsplash.com/photo-1432888622747-4eb9a8f5a07a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c29jaWFsJTIwbWVkaWF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample11"
+            },
+            {
+                title: "Correction de Textes",
+                description: "Relecture et correction professionnelle de vos documents importants.",
+                price: "€0.05/mot",
+                category: "Rédaction",
+                image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvb2ZyZWFkaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample12"
+            },
+            {
+                title: "Packaging Design",
+                description: "Conception d'emballages attractifs pour vos produits.",
+                price: "€300",
+                category: "Design",
+                image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGFja2FnaW5nJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample13"
+            },
+            {
+                title: "Base de Données",
+                description: "Conception, optimisation et gestion de bases de données.",
+                price: "€350",
+                category: "Développement",
+                image: "https://images.unsplash.com/photo-1548092372-44d4d9ca56f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGF0YWJhc2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample14"
+            },
+            {
+                title: "Email Marketing",
+                description: "Création de campagnes d'email marketing percutantes et analyses des résultats.",
+                price: "€200",
+                category: "Marketing",
+                image: "https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZW1haWwlMjBtYXJrZXRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample15"
+            },
+            {
+                title: "Rédaction Technique",
+                description: "Rédaction de documentation technique précise et complète.",
+                price: "€0.15/mot",
+                category: "Rédaction",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGVjaG5pY2FsJTIwd3JpdGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample16"
+            },
+            {
+                title: "Design de Présentation",
+                description: "Création de présentations professionnelles et percutantes.",
+                price: "€150",
+                category: "Design",
+                image: "https://images.unsplash.com/photo-1590508248932-e6a97c5fc7f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJlc2VudGF0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample17"
+            },
+            {
+                title: "Sécurité Web",
+                description: "Audit de sécurité et renforcement de la protection de votre site web.",
+                price: "€500",
+                category: "Développement",
+                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3liZXIlMjBzZWN1cml0eXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample18"
+            },
+            {
+                title: "Analyse de Marché",
+                description: "Études de marché approfondies pour orienter vos stratégies commerciales.",
+                price: "€400",
+                category: "Marketing",
+                image: "https://images.unsplash.com/photo-1591696205602-2f950c417dad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFya2V0JTIwcmVzZWFyY2h8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample19"
+            },
+            {
+                title: "Scripts Vidéo",
+                description: "Écriture de scripts engageants pour vos vidéos YouTube ou publicitaires.",
+                price: "€120",
+                category: "Rédaction",
+                image: "https://images.unsplash.com/photo-1574339441819-4a99ab55a2eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmlkZW8lMjBzY3JpcHR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample20"
+            },
+            // Additional services to reach 40
+            {
+                title: "Design de Bannières",
+                description: "Création de bannières publicitaires attractives pour le web.",
+                price: "€100",
+                category: "Design",
+                image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFubmVyJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample21"
+            },
+            {
+                title: "Maintenance WordPress",
+                description: "Services complets de maintenance et mise à jour pour sites WordPress.",
+                price: "€200/mois",
+                category: "Développement",
+                image: "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29yZHByZXNzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample22"
+            },
+            {
+                title: "Stratégie de Contenu",
+                description: "Élaboration d'une stratégie de contenu sur mesure pour votre marque.",
+                price: "€350",
+                category: "Marketing",
+                image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29udGVudCUyMHN0cmF0ZWd5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample23"
+            },
+            {
+                title: "Rédaction Publicitaire",
+                description: "Textes persuasifs pour vos campagnes publicitaires et landing pages.",
+                price: "€0.12/mot",
+                category: "Rédaction",
+                image: "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWR2ZXJ0aXNpbmclMjBjb3B5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample24"
+            },
+            {
+                title: "Design de Cartes de Visite",
+                description: "Conception de cartes de visite professionnelles et mémorables.",
+                price: "€80",
+                category: "Design",
+                image: "https://images.unsplash.com/photo-1531496366076-861df13f4e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVzaW5lc3MlMjBjYXJkfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample25"
+            },
+            {
+                title: "Développement Shopify",
+                description: "Création de boutiques en ligne sur mesure avec Shopify.",
+                price: "€450",
+                category: "Développement",
+                image: "https://images.unsplash.com/photo-1590402494610-2c7a0d599afd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvcGlmeXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample26"
+            },
+            {
+                title: "Optimisation SEO",
+                description: "Audit et optimisation de votre site web pour améliorer son référencement.",
+                price: "€300",
+                category: "Marketing",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2VvJTIwb3B0aW1pemF0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample27"
+            },
+            {
+                title: "Rédaction de E-book",
+                description: "Création de e-books informatifs et engageants sur votre sujet d'expertise.",
+                price: "€0.20/mot",
+                category: "Rédaction",
+                image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZWJvb2t8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample28"
+            },
+            {
+                title: "Design d'Icônes",
+                description: "Ensemble d'icônes personnalisées pour votre application ou site web.",
+                price: "€150",
+                category: "Design",
+                image: "https://images.unsplash.com/photo-1611934180042-da79105946e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aWNvbiUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample29"
+            },
+            {
+                title: "Application Web React",
+                description: "Développement d'applications web réactives et performantes avec React.",
+                price: "€600",
+                category: "Développement",
+                image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVhY3QlMjBqc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample30"
+            },
+            {
+                title: "Stratégie Instagram",
+                description: "Développement d'une stratégie complète pour maximiser votre présence Instagram.",
+                price: "€250",
+                category: "Marketing",
+                image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5zdGFncmFtJTIwbWFya2V0aW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample31"
+            },
+            {
+                title: "Articles de Blog",
+                description: "Rédaction d'articles de blog engageants et optimisés SEO.",
+                price: "€0.08/mot",
+                category: "Rédaction",
+                image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvZyUyMGFydGljbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample32"
+            },
+            {
+                title: "Charte Graphique",
+                description: "Création d'une identité visuelle complète pour votre entreprise.",
+                price: "€500",
+                category: "Design",
+                image: "https://images.unsplash.com/photo-1602576666092-b5d34d9c75ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnJhbmQlMjBndWlkZWxpbmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample33"
+            },
+            {
+                title: "API RESTful",
+                description: "Développement d'API RESTful robustes et bien documentées.",
+                price: "€450",
+                category: "Développement",
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBpfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample34"
+            },
+            {
+                title: "Analyse de Concurrence",
+                description: "Analyse approfondie de vos concurrents et recommandations stratégiques.",
+                price: "€350",
+                category: "Marketing",
+                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29tcGV0aXRvciUyMGFuYWx5c2lzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample35"
+            },
+            {
+                title: "Description Produit",
+                description: "Rédaction de descriptions produits persuasives pour augmenter vos ventes.",
+                price: "€0.07/mot",
+                category: "Rédaction",
+                image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdCUyMGRlc2NyaXB0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample36"
+            },
+            {
+                title: "Design d'Infographie",
+                description: "Création d'infographies percutantes pour présenter vos données.",
+                price: "€180",
+                category: "Design",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5mb2dyYXBoaWN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample37"
+            },
+            {
+                title: "Intégration Front-end",
+                description: "Intégration responsive de vos maquettes en HTML/CSS/JS.",
+                price: "€300",
+                category: "Développement",
+                image: "https://images.unsplash.com/photo-1627379744975-357a5d797674?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJvbnRlbmQlMjBkZXZlbG9wbWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample38"
+            },
+            {
+                title: "Stratégie LinkedIn",
+                description: "Optimisation de profil et stratégie de contenu pour LinkedIn.",
+                price: "€200",
+                category: "Marketing",
+                image: "https://images.unsplash.com/photo-1611944212129-29977ae1398c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGlua2VkaW4lMjBtYXJrZXRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample39"
+            },
+            {
+                title: "Scripts Podcast",
+                description: "Rédaction de scripts captivants pour vos épisodes de podcast.",
+                price: "€0.15/mot",
+                category: "Rédaction",
+                image: "https://images.unsplash.com/photo-1589903308904-d969a5ad15d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9kY2FzdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                link: "https://www.fiverr.com/sample40"
+            }
+        ];
+
+        // Function to generate service cards
+        function generateServiceCards(servicesToShow) {
+            const servicesGrid = document.querySelector('.services-grid');
+            servicesGrid.innerHTML = '';
+            
+            servicesToShow.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                
+                card.innerHTML = `
+                    <div class="service-image">
+                        <img src="${service.image}" alt="${service.title}">
+                        <div class="service-category">${service.category}</div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">${service.title}</h3>
+                        <p class="service-description">${service.description}</p>
+                        <div class="service-meta">
+                            <div class="service-price">${service.price}</div>
+                            <a href="${service.link}" target="_blank" class="service-link">Voir le service</a>
+                        </div>
+                    </div>
+                `;
+                
+                servicesGrid.appendChild(card);
+            });
+        }
+
+        // Initialize the page with all services
+        document.addEventListener('DOMContentLoaded', function() {
+            generateServiceCards(services);
+            
+            // Add filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.textContent;
+                    
+                    if (filter === 'Tous') {
+                        generateServiceCards(services);
+                    } else {
+                        const filteredServices = services.filter(service => service.category === filter);
+                        generateServiceCards(filteredServices);
+                    }
+                });
+            });
+            
+            // Add search functionality
+            const searchInput = document.querySelector('.search-box input');
+            const searchButton = document.querySelector('.search-box button');
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                if (searchTerm.trim() === '') {
+                    generateServiceCards(services);
+                    return;
+                }
+                
+                const filteredServices = services.filter(service => 
+                    service.title.toLowerCase().includes(searchTerm) || 
+                    service.description.toLowerCase().includes(searchTerm) ||
+                    service.category.toLowerCase().includes(searchTerm)
+                );
+                
+                generateServiceCards(filteredServices);
+            }
+            
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
