@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Fiverr Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary: #1dbf73;
+            --primary-dark: #19a463;
+            --secondary: #62646a;
+            --dark: #222325;
+            --light: #f7f7f7;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1dbf73 0%, #0d8f55 100%);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .btn {
+            animation: fadeIn 1.5s ease;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(29, 191, 115, 0.1);
+            color: var(--primary);
+            font-size: 36px;
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .service-content p {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .service-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #222325 0%, #000000 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .services {
+                padding: 80px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Fiverr<span>Pro</span></a>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" class="btn">Commander</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Services Fiverr Premium</h1>
+                <p>Découvrez nos 30 services professionnels pour booster votre entreprise en ligne. Qualité, rapidité et satisfaction garantie.</p>
+                <a href="#services" class="btn">Explorer les services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Services Premium</h2>
+                <p>Choisissez parmi notre sélection de services professionnels pour développer votre présence en ligne</p>
+            </div>
+            <div class="services-grid" id="services-container">
+                <!-- Les services seront générés par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Prêt à transformer votre entreprise ?</h2>
+            <p>Commandez dès maintenant l'un de nos services et bénéficiez d'un résultat professionnel en un temps record.</p>
+            <a href="#" class="btn">Commander un service</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FiverrPro</h3>
+                    <p>Votre partenaire de confiance pour des services en ligne de qualité professionnelle.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Design Graphique</a></li>
+                        <li><a href="#">Marketing Digital</a></li>
+                        <li><a href="#">Développement Web</a></li>
+                        <li><a href="#">Rédaction</a></li>
+                        <li><a href="#">Vidéo & Animation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Utiles</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> contact@fiverrpro.com</li>
+                        <li><i class="fas fa-phone"></i> +33 1 23 45 67 89</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 FiverrPro. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Données des services
+        const services = [
+            {
+                icon: "fas fa-paint-brush",
+                title: "Logo Design Professionnel",
+                description: "Conception de logo unique et mémorable pour votre marque.",
+                price: "€50"
+            },
+            {
+                icon: "fas fa-code",
+                title: "Développement Site Web",
+                description: "Création de site web responsive et moderne.",
+                price: "€200"
+            },
+            {
+                icon: "fas fa-search",
+                title: "SEO Optimisation",
+                description: "Améliorez votre classement sur les moteurs de recherche.",
+                price: "€150"
+            },
+            {
+                icon: "fas fa-pencil-alt",
+                title: "Rédaction Article de Blog",
+                description: "Contenu optimisé SEO et engageant pour votre blog.",
+                price: "€30"
+            },
+            {
+                icon: "fas fa-video",
+                title: "Montage Vidéo Professionnel",
+                description: "Montage vidéo de qualité pour vos projets.",
+                price: "€80"
+            },
+            {
+                icon: "fas fa-bullhorn",
+                title: "Marketing sur les Réseaux Sociaux",
+                description: "Stratégie et gestion de vos réseaux sociaux.",
+                price: "€120"
+            },
+            {
+                icon: "fas fa-chart-line",
+                title: "Analyse de Données",
+                description: "Analyse approfondie de vos données commerciales.",
+                price: "€180"
+            },
+            {
+                icon: "fas fa-mobile-alt",
+                title: "Développement d'Application Mobile",
+                description: "Création d'applications iOS et Android.",
+                price: "€500"
+            },
+            {
+                icon: "fas fa-shopping-cart",
+                title: "Configuration Boutique en Ligne",
+                description: "Mise en place de votre e-commerce.",
+                price: "€250"
+            },
+            {
+                icon: "fas fa-palette",
+                title: "Design d'Interface Utilisateur",
+                description: "Conception d'UI moderne et intuitive.",
+                price: "€150"
+            },
+            {
+                icon: "fas fa-voice",
+                title: "Voix Off Professionnelle",
+                description: "Enregistrement de voix off pour vos vidéos.",
+                price: "€40"
+            },
+            {
+                icon: "fas fa-translate",
+                title: "Traduction Professionnelle",
+                description: "Traduction de documents dans toutes les langues.",
+                price: "€25"
+            },
+            {
+                icon: "fas fa-camera",
+                title: "Photographie de Produit",
+                description: "Photos professionnelles pour vos produits.",
+                price: "€70"
+            },
+            {
+                icon: "fas fa-file-invoice",
+                title: "Design de Présentation",
+                description: "Création de présentations percutantes.",
+                price: "€60"
+            },
+            {
+                icon: "fas fa-envelope-open-text",
+                title: "Rédaction d'Email Marketing",
+                description: "Campagnes d'email engageantes et convertissantes.",
+                price: "€45"
+            },
+            {
+                icon: "fas fa-chart-pie",
+                title: "Infographie Personnalisée",
+                description: "Création d'infographies attrayantes.",
+                price: "€90"
+            },
+            {
+                icon: "fas fa-headset",
+                title: "Support Client Virtuel",
+                description: "Gestion de votre service client en ligne.",
+                price: "€35/h"
+            },
+            {
+                icon: "fas fa-book",
+                title: "Rédaction de Livre Blanc",
+                description: "Contenu expert pour positionner votre marque.",
+                price: "€200"
+            },
+            {
+                icon: "fas fa-ad",
+                title: "Création de Publicités",
+                description: "Conception de publicités percutantes.",
+                price: "€75"
+            },
+            {
+                icon: "fas fa-database",
+                title: "Gestion de Base de Données",
+                description: "Organisation et optimisation de vos données.",
+                price: "€120"
+            },
+            {
+                icon: "fas fa-podcast",
+                title: "Production de Podcast",
+                description: "Enregistrement et montage de podcasts.",
+                price: "€100"
+            },
+            {
+                icon: "fas fa-fingerprint",
+                title: "Identité Visuelle Complète",
+                description: "Création de votre charte graphique complète.",
+                price: "€300"
+            },
+            {
+                icon: "fas fa-tasks",
+                title: "Gestion de Projet",
+                description: "Planification et suivi de vos projets.",
+                price: "€80/h"
+            },
+            {
+                icon: "fas fa-comments",
+                title: "Community Management",
+                description: "Animation et modération de vos communautés en ligne.",
+                price: "€150"
+            },
+            {
+                icon: "fas fa-lock",
+                title: "Audit de Sécurité",
+                description: "Vérification de la sécurité de votre site web.",
+                price: "€180"
+            },
+            {
+                icon: "fas fa-rocket",
+                title: "Lancement de Produit",
+                description: "Stratégie complète pour le lancement de votre produit.",
+                price: "€400"
+            },
+            {
+                icon: "fas fa-chart-bar",
+                title: "Analyse de Marché",
+                description: "Étude approfondie de votre marché cible.",
+                price: "€220"
+            },
+            {
+                icon: "fas fa-graduation-cap",
+                title: "Création de Formation en Ligne",
+                description: "Développement de contenu de formation engageant.",
+                price: "€350"
+            },
+            {
+                icon: "fas fa-cogs",
+                title: "Automatisation de Processus",
+                description: "Automatisation de vos tâches répétitives.",
+                price: "€280"
+            },
+            {
+                icon: "fas fa-handshake",
+                title: "Conseil en Stratégie Digitale",
+                description: "Accompagnement personnalisé pour votre transformation digitale.",
+                price: "€150/h"
+            }
+        ];
+
+        // Générer les cartes de services
+        const servicesContainer = document.getElementById('services-container');
+        
+        services.forEach(service => {
+            const serviceCard = document.createElement('div');
+            serviceCard.className = 'service-card';
+            
+            serviceCard.innerHTML = `
+                <div class="service-icon">
+                    <i class="${service.icon}"></i>
+                </div>
+                <div class="service-content">
+                    <h3>${service.title}</h3>
+                    <p>${service.description}</p>
+                    <div class="service-price">
+                        <span class="price">À partir de ${service.price}</span>
+                        <a href="#" class="btn">Commander</a>
+                    </div>
+                </div>
+            `;
+            
+            servicesContainer.appendChild(serviceCard);
+        });
+
+        // Animation au défilement
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observer toutes les cartes de service
+        document.querySelectorAll('.service-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Menu mobile
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Fermer le menu mobile en cliquant sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
